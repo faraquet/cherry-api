@@ -7,8 +7,8 @@ class PdfController < ApplicationController
     browser.go_to("file:///#{Rails.root}/tmp/#{filename}.html")
     pdf_options = { path: "tmp/#{filename}.pdf" }
 
-    pdf_options[:landscape] = ActiveRecord::Type::Boolean.new.deserialize(params[:landscape])
-
+    pdf_options[:landscape] = ActiveRecord::Type::Boolean.new.deserialize(params[:landscape]) if params[:landscape].present?
+    pdf_options[:scale] = ActiveRecord::Type::Float.new.deserialize(params[:scale]) if params[:scale].present?
     browser.pdf(**pdf_options)
 
     send_file "tmp/#{filename}.pdf", type: "pdf"
