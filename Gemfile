@@ -11,6 +11,7 @@ gem 'jwt', '~> 2.3'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'simple_command', '~> 0.1.0'
+gem 'ferrum', '~> 0.11'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
