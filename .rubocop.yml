@@ -1,0 +1,53 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Layout/SpaceInsideRangeLiteral:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+Style/CommentAnnotation:
+  Enabled: false
+
+RSpec/RepeatedExampleGroupBody:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
