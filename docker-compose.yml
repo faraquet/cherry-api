@@ -1,0 +1,24 @@
+version: "3.3"
+services:
+  web:
+    build:
+      context: .
+      args:
+        RUBY_VERSION: '2.7.5'
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/app:cached
+      - rails_cache:/app/tmp/cache
+      - bundle:/usr/local/bundle
+    command: bash -c "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0"
+    ports:
+      - '3003:3000'
+
+volumes:
+  postgres:
+  redis:
+  bundle:
+  node_modules:
+  rails_cache:
+  packs:

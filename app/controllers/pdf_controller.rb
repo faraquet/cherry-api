@@ -1,6 +1,6 @@
 class PdfController < ApplicationController
   def create
-    browser = Ferrum::Browser.new(timeout: 300)
+    browser = Ferrum::Browser.new(timeout: 300, browser_options: { 'no-sandbox': nil })
     filename = "temp-#{DateTime.now.strftime('%Q')}"
     File.open("tmp/#{filename}.html", "w") { |file| file.write(params[:content]) }
 
