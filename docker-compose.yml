@@ -14,6 +14,8 @@ services:
     command: bash -c "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0"
     ports:
       - '3003:3000'
+    environment:
+      TOKEN_AUTHENTICATABLE: "false"
 
 volumes:
   postgres:
