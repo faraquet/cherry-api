@@ -21,6 +21,8 @@ To enable it please use `TOKEN_AUTHENTICATABLE=true` in your `.env` file.
 
 **Create a new user**:
 
+To enable self-registration via API please make sure that you `SELF_REGISTRATION_AVAILABLE` is set to `true` in your `.env` file.
+
 ```console
 curl -X POST -H 'Content-type: application/json' -d '{"email": "cherry-pdf@example.com", "password": "testpassword"}' localhost:3003/register
 ```
