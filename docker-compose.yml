@@ -1,7 +1,11 @@
 version: "3.3"
 services:
   web:
-    image: faraquet/cherry-pdf:0.0.1
+    image: faraquet/cherry-pdf:0.0.2
+    build:
+      context: .
+      args:
+        RUBY_VERSION: '2.7.5'
     stdin_open: true
     tty: true
     volumes:
@@ -11,8 +15,6 @@ services:
     command: bash -c "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0"
     ports:
       - '3003:3000'
-    environment:
-      TOKEN_AUTHENTICATABLE: "false"
 
 volumes:
   postgres:
