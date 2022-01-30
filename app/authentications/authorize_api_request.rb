@@ -8,7 +8,7 @@ class AuthorizeApiRequest
   attr_reader :headers
 
   def call
-    return user
+    user
   end
 
   private
@@ -22,6 +22,6 @@ class AuthorizeApiRequest
   end
 
   def http_auth_header
-    return headers["Authorization"].split(" ").last if headers["Authorization"].present?
+    headers["Authorization"]
   end
 end
