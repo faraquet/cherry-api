@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 5.0'
@@ -13,6 +12,7 @@ gem 'simple_command', '~> 0.1.0'
 gem 'ferrum', '~> 0.11'
 
 group :development, :test do
+  gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "pry-rails", "~> 0.3.6"
   gem "pry-byebug", "~> 3.9.0"

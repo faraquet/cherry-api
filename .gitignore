@@ -32,3 +32,6 @@
 
 # Idea
 .idea
+
+# Dotenv
+.env

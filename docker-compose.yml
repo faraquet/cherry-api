@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   web:
-    image: faraquet/cherry-pdf:0.0.2
+    image: faraquet/cherry-pdf:0.0.3
     build:
       context: .
       args:
@@ -15,11 +15,8 @@ services:
     command: bash -c "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0"
     ports:
       - '3003:3000'
-
+    env_file:
+      - .env
 volumes:
-  postgres:
-  redis:
   bundle:
-  node_modules:
   rails_cache:
-  packs:

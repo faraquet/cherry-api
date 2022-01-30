@@ -14,6 +14,8 @@ module TokenAuthenticatable
   private
 
   def authenticate_request
+    return unless ActiveRecord::Type::Boolean.new.deserialize(ENV["TOKEN_AUTHENTICATABLE"])
+
     @current_user = AuthorizeApiRequest.call(request.headers).result
 
     raise UnauthorizedException unless @current_user
