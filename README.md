@@ -1,4 +1,4 @@
-## Chrome-headless pdf generator based on Ruby on Rails
+## Ruby on Rails pdf generator based on headless Chrome
 
 ### Usage
 
