@@ -16,3 +16,4 @@ curl --location --request POST 'localhost:3003/html_to_pdf' \
 
 - Readme
 - More options
+- Specs

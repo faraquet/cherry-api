@@ -1,10 +1,7 @@
 version: "3.3"
 services:
   web:
-    build:
-      context: .
-      args:
-        RUBY_VERSION: '2.7.5'
+    image: faraquet/cherry-pdf:0.0.1
     stdin_open: true
     tty: true
     volumes:
