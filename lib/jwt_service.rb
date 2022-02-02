@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JwtService
   class << self
     def encode(payload:, expires_at: 24.hours.from_now)
@@ -5,7 +7,7 @@ class JwtService
 
       {
         auth_token: JWT.encode(payload, Rails.application.secrets.secret_key_base),
-        expires_at: expires_at,
+        expires_at: expires_at
       }
     end
 
@@ -13,7 +15,7 @@ class JwtService
       body = JWT.decode(token, Rails.application.secrets.secret_key_base)[0]
       HashWithIndifferentAccess.new(body)
     rescue JWT::DecodeError, JWT::ExpiredSignature
-      return nil
+      nil
     end
   end
 end

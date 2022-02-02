@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AuthenticateUser
   prepend SimpleCommand
 
@@ -18,7 +20,7 @@ class AuthenticateUser
     if (user = User.find_by(email: email)).present? && user.authenticate(password)
       user
     else
-      errors.add(:user_authentication, "Invalid Credentials")
+      errors.add(:user_authentication, 'Invalid Credentials')
     end
   end
 end

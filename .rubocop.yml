@@ -4,50 +4,113 @@ require:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 2.7.2
   NewCops: enable
-
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-
-Layout/SpaceInsideRangeLiteral:
-  Enabled: false
-
-Layout/LineLength:
-  Enabled: false
-
-Style/TrailingCommaInArrayLiteral:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
+  Exclude:
+    - bin/**/*
+    - db/seeds.rb
 
 RSpec/MultipleExpectations:
   Enabled: false
 
-RSpec/ExampleLength:
-  Enabled: false
-
-Metrics/BlockLength:
-  Enabled: false
-
 RSpec/MultipleMemoizedHelpers:
-  Enabled: false
+  Max: 10
+  Exclude:
+    - spec/api/**/*
 
-Style/CommentAnnotation:
-  Enabled: false
+RSpec/ExampleLength:
+  Max: 10
+  Exclude:
+    - spec/api/**/*
 
-RSpec/RepeatedExampleGroupBody:
-  Enabled: false
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - if
+    - and
 
-RSpec/FilePath:
-  Enabled: false
+RSpec/NestedGroups:
+  Max: 6
 
 RSpec/MessageSpies:
   Enabled: false
 
+Layout/LineLength:
+  Max: 120
+
+Layout/LeadingCommentSpace:
+  Exclude:
+    - Gemfile
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+Style/Documentation:
+  Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Style/SymbolArray:
+  Exclude:
+    - Gemfile
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Metrics/ClassLength:
+  Max: 200
+
 Metrics/MethodLength:
+  Max: 50
+  Exclude:
+    - db/seeds.rb
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - db/seeds.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/**/*
+    - config/routes.rb
+    - db/**/*
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - db/seeds.rb
+
+Metrics/AbcSize:
+  Max: 40
+
+Lint/RaiseException:
+  Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Naming/VariableNumber:
+  Enabled: true
+  EnforcedStyle: non_integer
+  Exclude:
+    - db/seeds.rb
+
+Rails/SkipsModelValidations:
   Enabled: false
