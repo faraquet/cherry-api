@@ -222,6 +222,8 @@ GEM
     rubocop-rspec (2.8.0)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
+    shoulda-matchers (5.1.0)
+      activesupport (>= 5.2.0)
     simple_command (0.1.0)
     spoon (0.0.6)
       ffi
@@ -272,6 +274,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  shoulda-matchers (~> 5.1)
   simple_command (~> 0.1.0)
   spring
   sqlite3 (~> 1.4)

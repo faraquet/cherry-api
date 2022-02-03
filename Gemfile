@@ -23,15 +23,17 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
-
-  gem 'rspec-rails'
-
-  gem 'factory_bot_rails'
 end
 
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
+end
+
+group :test do
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 5.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
