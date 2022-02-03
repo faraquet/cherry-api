@@ -79,6 +79,11 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ferrum (0.11)
       addressable (~> 2.5)
       cliver (~> 0.3)
@@ -254,6 +259,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   dotenv-rails (~> 2.7, >= 2.7.6)
+  factory_bot_rails
   ferrum (~> 0.11)
   jwt (~> 2.3)
   listen (~> 3.3)
