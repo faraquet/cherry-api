@@ -2,6 +2,8 @@
 
 class PdfController < ApplicationController
   def create
+    params.permit!
+
     browser = Ferrum::Browser.new(timeout: 300, browser_options: { 'no-sandbox': nil })
     filename = "temp-#{DateTime.now.strftime('%Q')}"
     File.write("tmp/#{filename}.html", params[:content])
@@ -14,7 +16,10 @@ class PdfController < ApplicationController
         ActiveRecord::Type::Boolean.new.deserialize(params[:landscape])
     end
 
-    pdf_options[:scale] = ActiveRecord::Type::Float.new.deserialize(params[:scale]) if params[:scale].present?
+    if params[:scale].present? # rubocop:disable Style/IfUnlessModifier
+      pdf_options[:scale] = ActiveRecord::Type::Float.new.deserialize(params[:scale])
+    end
+
     browser.pdf(**pdf_options)
 
     send_file "tmp/#{filename}.pdf", type: 'pdf'

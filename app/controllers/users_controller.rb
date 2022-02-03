@@ -3,9 +3,8 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_request
 
-  before_action only: :create, unless: lambda {
-                                         ActiveRecord::Type::Boolean.new.deserialize(ENV['SELF_REGISTRATION_AVAILABLE'])
-                                       } do
+  before_action only: :create,
+                unless: -> { ActiveRecord::Type::Boolean.new.deserialize(ENV['SELF_REGISTRATION_AVAILABLE']) } do
     render json: { error: 'Self registration is not available' }, status: :unprocessable_entity
   end
 
