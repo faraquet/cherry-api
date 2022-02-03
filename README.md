@@ -10,7 +10,9 @@
 
 ### Usage
 
-Copy `.env.sample` to `.env`
+Copy `.env.sample` to `.env`.
+
+Copy `config/database.yml.sample` to `config/database.yml`.
 
 ```
 docker-compose up -d

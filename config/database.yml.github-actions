@@ -1,0 +1,6 @@
+test:
+  adapter: sqlite3
+  host: localhost
+  encoding: unicode
+  database: github-actions
+  pool: 20
