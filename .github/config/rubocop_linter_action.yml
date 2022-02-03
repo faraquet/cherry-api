@@ -1,0 +1,4 @@
+rubocop_extensions:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec

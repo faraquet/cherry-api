@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AuthorizeApiRequest
   prepend SimpleCommand
 
@@ -22,6 +24,6 @@ class AuthorizeApiRequest
   end
 
   def http_auth_header
-    headers["Authorization"]
+    headers['Authorization']
   end
 end

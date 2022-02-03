@@ -1,4 +1,12 @@
-## Ruby on Rails pdf generator based on headless Chrome
+# cherry-pdf
+
+##### [![Rubocop](https://github.com/faraquet/cherry-pdf/actions/workflows/rubocop.yml/badge.svg)](https://github.com/faraquet/cherry-pdf/actions)
+
+---
+
+### Ruby on Rails pdf generator based on headless Chrome
+
+
 
 ### Usage
 
