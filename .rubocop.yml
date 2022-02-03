@@ -9,6 +9,7 @@ AllCops:
   Exclude:
     - bin/**/*
     - db/seeds.rb
+    - vendor/**/*
 
 RSpec/MultipleExpectations:
   Enabled: false
