@@ -1,12 +1,12 @@
-# cherry-pdf
+cherry-pdf
+======
 
-##### [![Rubocop](https://github.com/faraquet/cherry-pdf/actions/workflows/rubocop.yml/badge.svg)](https://github.com/faraquet/cherry-pdf/actions)
+[![RuboCop](https://github.com/faraquet/cherry-pdf/actions/workflows/rubocop.yml/badge.svg)](https://github.com/faraquet/cherry-pdf/actions)
+[![RSpec](https://github.com/faraquet/cherry-pdf/actions/workflows/rspec.yml/badge.svg)](https://github.com/faraquet/cherry-pdf/actions)
 
----
+Ruby on Rails PDF generator based on headless Chrome
 
-### Ruby on Rails pdf generator based on headless Chrome
-
-
+----
 
 ### Usage
 
