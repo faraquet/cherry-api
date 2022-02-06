@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+require 'ferrum'
+
 class PdfController < ApplicationController
   def create
     params.permit!
 
     browser = Ferrum::Browser.new(timeout: 300, browser_options: { 'no-sandbox': nil })
-    filename = "temp-#{DateTime.now.strftime('%Q')}"
+    filename = "temp-pdf-#{DateTime.now.strftime('%Q')}"
     File.write("tmp/#{filename}.html", params[:content])
 
     browser.go_to("file:///#{Rails.root.join("tmp/#{filename}.html")}")
