@@ -18,11 +18,20 @@ Copy `config/database.yml.sample` to `config/database.yml`.
 docker-compose up -d
 ```
 
+To create PDF from HTML
 ```console
 curl --location --request POST 'localhost:3003/html_to_pdf' \
 --header 'Content-type: application/json' \
 --data-raw '{"content": "<h1> Awesome! </h1>", "scale": 0.5, "landscape": true}'
 ```
+
+To create QR-code from TEXT
+```console
+curl --location --request POST 'localhost:3003/text_to_qr' \
+--header 'Content-type: application/json' \
+--data-raw '{"content": "https://github.com/faraquet/cherry-pdf"}'
+```
+
 ### Authentication
 
 By default authentication disabled.
