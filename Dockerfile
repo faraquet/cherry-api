@@ -1,9 +1,9 @@
 ARG RUBY_VERSION
 FROM ruby:$RUBY_VERSION-slim-buster
 
-LABEL name="cherry-pdf" \
+LABEL name="cherry-api" \
 	maintainer="Andrei Andriichuk <yaidzo@yandex.ru>" \
-	version="0.0.1"
+	version="0.0.5"
 
 # Install deps + add Chrome Stable + purge all the things
 RUN apt-get update && apt-get install -y \

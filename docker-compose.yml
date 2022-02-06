@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   web:
-    image: faraquet/cherry-pdf:0.0.5
+    image: faraquet/cherry-api:0.0.5
     build:
       context: .
       args:
