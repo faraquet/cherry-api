@@ -1,8 +1,8 @@
-cherry-pdf
+cherry-api
 ======
 
-[![RuboCop](https://github.com/faraquet/cherry-pdf/actions/workflows/rubocop.yml/badge.svg)](https://github.com/faraquet/cherry-pdf/actions)
-[![RSpec](https://github.com/faraquet/cherry-pdf/actions/workflows/rspec.yml/badge.svg)](https://github.com/faraquet/cherry-pdf/actions)
+[![RuboCop](https://github.com/faraquet/cherry-api/actions/workflows/rubocop.yml/badge.svg)](https://github.com/faraquet/cherry-api/actions)
+[![RSpec](https://github.com/faraquet/cherry-api/actions/workflows/rspec.yml/badge.svg)](https://github.com/faraquet/cherry-api/actions)
 
 Ruby on Rails PDF generator based on headless Chrome
 
@@ -29,7 +29,7 @@ To create QR-code from TEXT
 ```console
 curl --location --request POST 'localhost:3003/text_to_qr' \
 --header 'Content-type: application/json' \
---data-raw '{"content": "https://github.com/faraquet/cherry-pdf"}'
+--data-raw '{"content": "https://github.com/faraquet/cherry-api"}'
 ```
 
 ### Authentication
@@ -43,13 +43,13 @@ To enable it please use `TOKEN_AUTHENTICATABLE=true` in your `.env` file.
 To enable self-registration via API please make sure that you `SELF_REGISTRATION_AVAILABLE` is set to `true` in your `.env` file.
 
 ```console
-curl -X POST -H 'Content-type: application/json' -d '{"email": "cherry-pdf@example.com", "password": "testpassword"}' localhost:3003/register
+curl -X POST -H 'Content-type: application/json' -d '{"email": "cherry-api@example.com", "password": "testpassword"}' localhost:3003/register
 ```
 
 **Authenticate a user**:
 
 ```console
-curl -X POST -H 'Content-type: application/json' -d '{"email": "cherry-pdf@example.com", "password": "testpassword"}' localhost:3003/login
+curl -X POST -H 'Content-type: application/json' -d '{"email": "cherry-api@example.com", "password": "testpassword"}' localhost:3003/login
 ```
 
 On successful login, `{"auth_token": <token>, "expires_at": <datetime>}` will be returned. By default this token will be expired after 24 hours.
