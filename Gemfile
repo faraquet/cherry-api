@@ -11,8 +11,8 @@ gem 'sqlite3', '~> 1.4'
 
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'ferrum', '~> 0.11', require: false
-gem 'simple_command', '~> 0.1.0'
 gem 'rqrcode', '~> 2.0', require: false
+gem 'simple_command', '~> 0.1.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
