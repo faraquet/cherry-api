@@ -35,7 +35,3 @@ RUN mkdir -p /app
 
 WORKDIR /app
 RUN ln -s /bin/mkdir /usr/bin/mkdir
-
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
-RUN bundle install

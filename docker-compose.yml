@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   web:
-    image: faraquet/cherry-pdf:0.0.3
+    image: faraquet/cherry-pdf:0.0.5
     build:
       context: .
       args:
@@ -12,7 +12,7 @@ services:
       - .:/app:cached
       - rails_cache:/app/tmp/cache
       - bundle:/usr/local/bundle
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle install && bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0"
     ports:
       - '3003:3000'
     env_file:
