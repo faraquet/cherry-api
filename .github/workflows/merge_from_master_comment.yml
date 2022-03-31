@@ -39,8 +39,16 @@ jobs:
           trigger: 'empty!'
       - name: Get branch name
         if: steps.check.outputs.triggered == 'true'
-        uses: xt0rted/pull-request-comment-branch@v1
-        id: comment-branch
+        uses: actions/checkout@v2
         with:
-          repo_token: ${{ github.token }}
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 #
+#      - name: Commit files
+#        run: |
+#          git commit --allow-empty -m "Trigger notification"
+#      - name: Push changes
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          branch: ${{ github.ref }}
