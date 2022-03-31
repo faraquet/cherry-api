@@ -1,0 +1,45 @@
+name: Comment Merge Master
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  merge-master-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment trigger
+        # Pinning a particular commit to avoid https://github.com/Khan/pull-request-comment-trigger/issues/22
+        uses: khan/pull-request-comment-trigger@ca8f46e213c14a9c38231cb031f66e16df796fe0
+        id: check
+        with:
+          trigger: 'master!'
+      - name: Get branch name
+        if: steps.check.outputs.triggered == 'true'
+        uses: xt0rted/pull-request-comment-branch@v1
+        id: comment-branch
+        with:
+          repo_token: ${{ github.token }}
+      - name: Merge
+        if: steps.check.outputs.triggered == 'true'
+        uses: everlytic/branch-merge@1.1.0
+        with:
+          github_token: ${{ github.token }}
+          source_ref: 'master'
+          target_branch: ${{ steps.comment-branch.outputs.head_ref }}
+          commit_message_template: '[Automated] Master merged into this PR'
+
+  merge-empty-commit-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment trigger
+        # Pinning a particular commit to avoid https://github.com/Khan/pull-request-comment-trigger/issues/22
+        uses: khan/pull-request-comment-trigger@ca8f46e213c14a9c38231cb031f66e16df796fe0
+        id: check
+        with:
+          trigger: 'empty!'
+      - name: Get branch name
+        if: steps.check.outputs.triggered == 'true'
+        uses: xt0rted/pull-request-comment-branch@v1
+        id: comment-branch
+        with:
+          repo_token: ${{ github.token }}
