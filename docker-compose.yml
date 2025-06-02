@@ -1,11 +1,11 @@
 version: "3.3"
 services:
   web:
-    image: faraquet/cherry-api:0.0.5
+    image: faraquet/cherry-api:0.0.6
     build:
       context: .
       args:
-        RUBY_VERSION: '2.7.5'
+        RUBY_VERSION: '3.3.5'
     stdin_open: true
     tty: true
     volumes:

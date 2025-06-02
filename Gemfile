@@ -3,22 +3,22 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'bcrypt', '~> 3.1.7'
-gem 'jwt', '~> 2.3'
-gem 'puma', '~> 5.0'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-gem 'sqlite3', '~> 1.4'
+gem 'bcrypt', '~> 3.1.20'
+gem 'jwt', '~> 2.8'
+gem 'puma', '~> 6.4'
+gem 'rails', '~> 8.0.2'
+gem 'sqlite3', '~> 2.1'
 
-gem 'bootsnap', '>= 1.4.4', require: false
-gem 'ferrum', '~> 0.11', require: false
-gem 'rqrcode', '~> 2.0', require: false
-gem 'simple_command', '~> 0.1.0'
+gem 'bootsnap', '>= 1.18.0', require: false
+gem 'ferrum', '~> 0.15', require: false
+gem 'rqrcode', '~> 2.2', require: false
+gem 'simple_command', '~> 1.0.1'
 
 group :development, :test do
-  gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
-  gem 'pry-byebug', '~> 3.9.0'
-  gem 'pry-rails', '~> 0.3.6'
+  gem 'debug', platforms: %i[mri mingw x64_mingw], require: 'debug/prelude'
+  gem 'dotenv-rails', '~> 3.1'
+  gem 'pry-byebug', '~> 3.10.1'
+  gem 'pry-rails', '~> 0.3.11'
   gem 'pry-theme'
 
   gem 'rubocop-performance', require: false
@@ -27,14 +27,14 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '~> 3.3'
+  gem 'listen', '~> 3.9'
   gem 'spring'
 end
 
 group :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails'
-  gem 'shoulda-matchers', '~> 5.1'
+  gem 'shoulda-matchers', '~> 6.4'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
