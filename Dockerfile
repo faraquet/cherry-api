@@ -1,8 +1,8 @@
 ARG RUBY_VERSION
-FROM ruby:$RUBY_VERSION-slim-buster
+FROM ruby:$RUBY_VERSION-slim-bookworm
 
 LABEL name="cherry-api" \
-	maintainer="Andrei Andriichuk <yaidzo@yandex.ru>"
+	maintainer="Andrei Andriichuk <andreiandriichuk@gmail.com>"
 
 # Install deps + add Chrome Stable + purge all the things
 RUN apt-get update && apt-get install -y \
@@ -33,4 +33,3 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /app
 
 WORKDIR /app
-RUN ln -s /bin/mkdir /usr/bin/mkdir
