@@ -10,14 +10,12 @@ gem 'rails', '~> 8.0.2'
 gem 'sqlite3', '~> 2.1'
 
 gem 'bootsnap', '>= 1.18.0', require: false
-gem 'ferrum', '~> 0.15', require: false
+gem 'ferrum', '~> 0.17', require: false
 gem 'rqrcode', '~> 2.2', require: false
 gem 'simple_command', '~> 1.0.1'
 
 group :development, :test do
-  gem 'debug', platforms: %i[mri mingw x64_mingw], require: 'debug/prelude'
   gem 'dotenv-rails', '~> 3.1'
-  gem 'pry-byebug', '~> 3.10.1'
   gem 'pry-rails', '~> 0.3.11'
   gem 'pry-theme'
 

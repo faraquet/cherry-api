@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 	curl \
 	gnupg \
   libpq-dev \
+  libyaml-dev \
   build-essential \
   libsqlite3-dev \
 	--no-install-recommends \
