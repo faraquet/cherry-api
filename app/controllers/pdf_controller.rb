@@ -6,7 +6,7 @@ class PdfController < ApplicationController
   def create
     params.permit!
 
-    browser = Ferrum::Browser.new(timeout: 300, browser_options: { 'no-sandbox': nil })
+    browser = Ferrum::Browser.new(timeout: 30, browser_options: { 'no-sandbox': nil })
     filename = "temp-pdf-#{DateTime.now.strftime('%Q')}"
 
     temp_html_path = "tmp/#{filename}.html"
