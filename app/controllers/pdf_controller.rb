@@ -1,41 +1,33 @@
 # frozen_string_literal: true
 
 require 'ferrum'
+require 'base64'
 
 class PdfController < ApplicationController
   def create
     params.permit!
 
     browser = Ferrum::Browser.new(timeout: 30, browser_options: { 'no-sandbox': nil })
-    filename = "temp-pdf-#{DateTime.now.strftime('%Q')}"
 
-    temp_html_path = "tmp/#{filename}.html"
-    temp_pdf_path = "tmp/#{filename}.pdf"
-    File.write(temp_html_path, params[:content])
+    html_content = params[:content]
+    data_url = "data:text/html;base64,#{Base64.strict_encode64(html_content)}"
+    browser.go_to(data_url)
 
-    pdf_options = { path: temp_pdf_path }
-
-    browser.go_to("file:///#{Rails.root.join("tmp/#{filename}.html")}")
-
-    if params[:landscape].present?
-      pdf_options[:landscape] =
-        ActiveRecord::Type::Boolean.new.deserialize(params[:landscape])
+    pdf_options = {}.tap do |options|
+      options[:landscape] = ActiveRecord::Type::Boolean.new.deserialize(params[:landscape]) if params[:landscape].present?
+      options[:scale] = ActiveRecord::Type::Float.new.deserialize(params[:scale]) if params[:scale].present?
+      options[:base64] = true  # Request PDF as base64 string
     end
 
-    if params[:scale].present? # rubocop:disable Style/IfUnlessModifier
-      pdf_options[:scale] = ActiveRecord::Type::Float.new.deserialize(params[:scale])
-    end
+    # Generate and decode PDF
+    pdf_base64 = browser.pdf(**pdf_options)
+    pdf_content = Base64.decode64(pdf_base64)
 
-    browser.pdf(**pdf_options)
-
-    pdf_content = File.read(temp_pdf_path)
-
-    send_data pdf_content, type: "application/pdf", filename: "#{filename}.pdf"
+    # Send PDF directly to client
+    send_data pdf_content,
+      type: "application/pdf",
+      filename: "document-#{DateTime.now.strftime('%Q')}.pdf"
   ensure
     browser&.quit
-
-    [temp_html_path, temp_pdf_path].each do |path|
-      File.delete(path) if File.exist?(path)
-    end
   end
 end
