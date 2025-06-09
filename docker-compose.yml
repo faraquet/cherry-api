@@ -5,7 +5,7 @@ services:
     build:
       context: .
       args:
-        RUBY_VERSION: '3.4'
+        RUBY_VERSION: '3.3'
     stdin_open: true
     tty: true
     volumes:

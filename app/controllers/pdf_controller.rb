@@ -6,50 +6,36 @@ class PdfController < ApplicationController
   def create
     params.permit!
 
-    # Create a data URL instead of writing to file
-    html_content = params[:content]
-    encoded_html = Base64.strict_encode64(html_content)
-    data_url = "data:text/html;base64,#{encoded_html}"
+    browser = Ferrum::Browser.new(timeout: 300, browser_options: { 'no-sandbox': nil })
+    filename = "temp-pdf-#{DateTime.now.strftime('%Q')}"
 
-    browser = Ferrum::Browser.new(
-      timeout: 30,
-      headless: true,
-      browser_options: {
-        'no-sandbox': nil,
-        'disable-web-security': nil,
-        'allow-file-access-from-files': nil
-      }
-    )
+    temp_html_path = "tmp/#{filename}.html"
+    temp_pdf_path = "tmp/#{filename}.pdf"
+    File.write(temp_html_path, params[:content])
 
-    begin
-      browser.go_to(data_url)
-    rescue => e
-      Rails.logger.error "Browser navigation failed: #{e.message}"
-      raise e
-    end
+    pdf_options = { path: temp_pdf_path }
 
-    # Generate PDF in memory (no path specified)
-    pdf_options = {}
+    browser.go_to("file:///#{Rails.root.join("tmp/#{filename}.html")}")
 
     if params[:landscape].present?
       pdf_options[:landscape] =
         ActiveRecord::Type::Boolean.new.deserialize(params[:landscape])
     end
 
-    if params[:scale].present?
+    if params[:scale].present? # rubocop:disable Style/IfUnlessModifier
       pdf_options[:scale] = ActiveRecord::Type::Float.new.deserialize(params[:scale])
     end
 
-    # Get PDF as binary data
-    pdf_data = browser.pdf(**pdf_options)
+    browser.pdf(**pdf_options)
 
-    # Send the PDF data directly without writing to file
-    send_data pdf_data,
-      type: 'application/pdf',
-      filename: "generated-#{DateTime.now.strftime('%Y%m%d_%H%M%S')}.pdf",
-      disposition: 'attachment'
+    pdf_content = File.read(temp_pdf_path)
 
+    send_data pdf_content, type: "application/pdf", filename: "#{filename}.pdf"
   ensure
     browser&.quit
+
+    [temp_html_path, temp_pdf_path].each do |path|
+      File.delete(path) if File.exist?(path)
+    end
   end
 end
